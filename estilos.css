@@ -1,5 +1,5 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: #f0f8ff;
   color: #333;
   margin: 0;
@@ -7,12 +7,14 @@ body {
 }
 
 h1 {
+  font-family: 'Poppins', sans-serif;
   color: #005baa;
   text-align: center;
   margin-bottom: 30px;
 }
 
 #ciclo {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 20px;
   font-weight: bold;
   margin-top: 30px;
@@ -25,17 +27,20 @@ h1 {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 25px;
+  justify-content: center;
 }
 
 .curso {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background-color: #e3f2fd;
   border: 2px solid #90caf9;
   border-radius: 10px;
-  padding: 10px;
+  padding: 12px;
   width: 220px;
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
+  font-weight: bold;
 }
 
 .curso:hover {
