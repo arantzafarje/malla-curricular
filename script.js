@@ -94,15 +94,32 @@ const cursos = [
   { nombre: "Internado en Gineco-Obstetricia", id: "internado_gineco", ciclo: 13, prerequisitos: ["preinternado"] }
 ];
 
-const contenedor = document.getElementById("contenedor-malla");
+const mallaContainer = document.getElementById("malla-container");
 
-cursos.forEach(curso => {
-  const div = document.createElement("div");
-  div.classList.add("curso");
-  div.id = curso.id;
-  div.innerText = `${curso.nombre} (Ciclo ${curso.ciclo})`;
-  div.addEventListener("click", () => toggleAprobado(curso));
-  contenedor.appendChild(div);
+const ciclosUnicos = [...new Set(cursos.map(c => c.ciclo))];
+ciclosUnicos.sort((a, b) => a - b);
+
+ciclosUnicos.forEach(ciclo => {
+  const titulo = document.createElement("div");
+  titulo.id = "ciclo";
+  titulo.innerText = `CICLO ${ciclo}`;
+  mallaContainer.appendChild(titulo);
+
+  const fila = document.createElement("div");
+  fila.classList.add("ciclo-container");
+
+  cursos
+    .filter(c => c.ciclo === ciclo)
+    .forEach(curso => {
+      const div = document.createElement("div");
+      div.classList.add("curso");
+      div.id = curso.id;
+      div.innerText = curso.nombre;
+      div.addEventListener("click", () => toggleAprobado(curso));
+      fila.appendChild(div);
+    });
+
+  mallaContainer.appendChild(fila);
 });
 
 function toggleAprobado(curso) {
