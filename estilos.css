@@ -12,21 +12,29 @@ h1 {
   margin-bottom: 30px;
 }
 
-#contenedor-malla {
+#ciclo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #005baa;
+}
+
+.ciclo-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+  gap: 10px;
+  margin-bottom: 25px;
 }
 
 .curso {
   background-color: #e3f2fd;
   border: 2px solid #90caf9;
   border-radius: 10px;
-  padding: 15px;
-  width: 250px;
-  cursor: pointer;
+  padding: 10px;
+  width: 220px;
   text-align: center;
+  cursor: pointer;
   transition: 0.3s;
 }
 
