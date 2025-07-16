@@ -137,11 +137,46 @@ function toggleAprobado(curso) {
 }
 
 window.onload = () => {
+  // Ocultar los cursos que tienen prerequisitos
   cursos.forEach(c => {
+    const div = document.getElementById(c.id);
     if (c.prerequisitos.length > 0) {
-      const div = document.getElementById(c.id);
       div.style.opacity = 0.5;
       div.style.pointerEvents = "none";
     }
   });
+
+  // Cargar progreso guardado
+  const guardados = JSON.parse(localStorage.getItem("cursos_aprobados")) || [];
+  guardados.forEach(id => {
+    const div = document.getElementById(id);
+    if (div) div.classList.add("aprobado");
+  });
+
+  // Re-evaluar desbloqueo de cursos
+  cursos.forEach(c => {
+    const prereqCumplido = c.prerequisitos.every(pr =>
+      document.getElementById(pr).classList.contains("aprobado")
+    );
+    const div = document.getElementById(c.id);
+    if (prereqCumplido) {
+      div.style.opacity = 1;
+      div.style.pointerEvents = "auto";
+    }
+  });
 };
+
+// FUNCIÓN para guardar cursos aprobados
+function guardarProgreso() {
+  const aprobados = cursos
+    .filter(c => document.getElementById(c.id).classList.contains("aprobado"))
+    .map(c => c.id);
+  localStorage.setItem("cursos_aprobados", JSON.stringify(aprobados));
+  alert("✅ Progreso guardado con éxito.");
+}
+
+// FUNCIÓN para reiniciar la malla
+function reiniciarMalla() {
+  localStorage.removeItem("cursos_aprobados");
+  location.reload();
+}
