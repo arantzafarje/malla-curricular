@@ -94,6 +94,7 @@ const cursos = [
   { nombre: "Internado en Gineco-Obstetricia", id: "internado_gineco", ciclo: 13, prerequisitos: ["preinternado"] }
 ];
 const mallaContainer = document.getElementById("malla-container");
+const ciclosUnicos = [...new Set(cursos.map(c => c.ciclo))].sort((a, b) => a - b);
 
 ciclosUnicos.forEach(ciclo => {
   const columna = document.createElement("div");
