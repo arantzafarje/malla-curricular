@@ -100,20 +100,19 @@ ciclosUnicos.forEach(ciclo => {
   columna.classList.add("columna-ciclo");
 
   const titulo = document.createElement("div");
-  titulo.id = "ciclo";
+  titulo.classList.add("ciclo-titulo");
   titulo.innerText = `ciclo ${ciclo}`;
   columna.appendChild(titulo);
 
-  cursos
-    .filter(c => c.ciclo === ciclo)
-    .forEach(curso => {
-      const div = document.createElement("div");
-      div.classList.add("curso");
-      div.id = curso.id;
-      div.innerText = curso.nombre;
-      div.addEventListener("click", () => toggleAprobado(curso));
-      columna.appendChild(div);
-    });
+  const cursosDelCiclo = cursos.filter(c => c.ciclo === ciclo);
+  cursosDelCiclo.forEach(curso => {
+    const div = document.createElement("div");
+    div.classList.add("curso");
+    div.id = curso.id;
+    div.innerText = curso.nombre;
+    div.addEventListener("click", () => toggleAprobado(curso));
+    columna.appendChild(div);
+  });
 
   mallaContainer.appendChild(columna);
 });
